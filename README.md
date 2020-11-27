@@ -60,5 +60,5 @@ SET GOARCH=amd64 #设置处理器类型
 
 ### 七、走进Golang
 
-Golang基础知识 之 变量与常量 [Demo01](Demo01\README.md)
+Golang基础知识 之 变量与常量 [Demo01](Demo01/README.md)
 
