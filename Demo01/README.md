@@ -13,7 +13,7 @@ Go语言中标识符由 数字 、字母 、及 “\_”（下划线）组成，
 |  **const**   | **fallthrough** |   **if**   |   **range**   |  **type**  |
 | **continue** |     **for**     | **import** |  **return**   |  **var**   |
 
-#### 2、[变量](VAR\main.go):
+#### 2、[变量](VAR/main.go):
 
 声明变量：
 
@@ -52,7 +52,7 @@ Go语言中标识符由 数字 、字母 、及 “\_”（下划线）组成，
 
    匿名变量使用 ’_' 表示，不占用内存空间，不分配内存
 
-#### 3、[常量](CONST\main.go):
+#### 3、[常量](CONST/main.go):
 
 1. `const` 声明常量
 
