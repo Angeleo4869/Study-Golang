@@ -1,6 +1,6 @@
 ### Demo02
 
-#### 一、fmt占位符
+#### 一、[fmt占位符](FMT_Placeholder/main.go)
 
 fmt占位符包括
 
