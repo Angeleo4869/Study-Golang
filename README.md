@@ -18,11 +18,16 @@
 
 ### 三、设置工作路径
 
-Go语言默认工作路径为（Windows环境下） C:\\User\\`username`\\go
+Go语言默认工作路径：
+
+| 平台    | GOPATH默认值     | 举例              |
+| ------- | ---------------- | ----------------- |
+| Windows | %USERPROFILE%/go | C:\User\用户名\go |
+| Unix    | $HOME/go         | /home/用户名/go   |
 
 开发者可自定义工作路径，通过修改环境变量，修改工作路径
 
-GOPATH=\\`自定义路径`
+`GOPATH`=\\`自定义路径`
 
 PATH 中添加 `%GOPATH%\bin;`
 
