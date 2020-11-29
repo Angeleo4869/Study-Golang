@@ -19,7 +19,7 @@ func main() {
 	b--//自减1
 	fmt.Println(a) 
 	fmt.Println(b) 
-	// fmt.Println(a++)//单目运算符不能作为Println参数
+	//在Go语言中 自增和自减 不是运算符 ，而是语句
 	//比较运算符
 	fmt.Println(a == b)
 	fmt.Println(a != b)
@@ -32,6 +32,10 @@ func main() {
 	fmt.Println( a > 3 || b < 4)
 	fmt.Println( ! (a > 3 ))
 	//位运算符
-	
+	fmt.Println(a & b)
+	fmt.Println(a | b)
+	fmt.Println(a ^ b)
+	fmt.Println(a << 2)
+	fmt.Println(a >> 2)
 
 }
