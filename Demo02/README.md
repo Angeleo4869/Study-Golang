@@ -112,4 +112,53 @@ Go语言中可以使用`for range`遍历数组、切片、字符串、map及通�
 2. map返回键和值
 3. 通道（channel）只返回通道内的值
 
-2、 
+2、 [循环结束条件](BREAK_CONTINUE/main.go)
+
+1. break：
+
+   `break`关键字用于结束本次循环
+
+   ```go
+   for {
+       //~~~
+       if true {
+           //~~~
+           break;//满足条件结束循环
+       }
+   }
+   ```
+
+   
+
+2. continue
+
+   `continue`关键字用于结束当前循环，下一次循环继续执行
+
+   ```go
+   for {
+       //~~~
+       if true {
+           //~~~
+           continue  //满足条件将直接跳过本次循环
+       }
+       //~~~
+   }
+   ```
+
+3、goto简化代码
+
+```go
+func gotoDemo() {
+    for {
+        //~~~
+        if true {
+            goto xx
+        }
+    }
+    
+    xx:
+    //~~~
+}
+```
+
+为了提高程序可读性，不建议使用`got`
