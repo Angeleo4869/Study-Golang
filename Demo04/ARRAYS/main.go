@@ -38,5 +38,16 @@ func main() {
 	var f = [4]int{1,2,3}
     for index, value := range f {
         fmt.Printf("%d %d\n",index,value)
-    }
+	}
+	
+	//多维数组
+	var g = [2][3]int{ //声明一个2*3 的整型数组并初始化
+		{1,2,3},
+		{4,5,6}}
+	for indexi := range g {
+		for  indexj,valuej := range g[indexi] {
+			fmt.Printf("%d: %d\t",indexj,valuej)
+		}
+		fmt.Println()
+	}
 }
