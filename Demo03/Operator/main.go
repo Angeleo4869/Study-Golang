@@ -31,5 +31,7 @@ func main() {
 	fmt.Println( a > 3 && b < 4)
 	fmt.Println( a > 3 || b < 4)
 	fmt.Println( ! (a > 3 ))
+	//位运算符
+	
 
 }
