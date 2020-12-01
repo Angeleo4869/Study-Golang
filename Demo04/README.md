@@ -248,5 +248,5 @@ for _ , v := m1 {
 delete(map,key)
 ```
 
-#### 六、[slice 与 map 结合使用](MAP_SLICE/main.go)
+#### 六、[slice 与 map 结合使用](MAP&SLICE/main.go)
 `slice`与`map`在结合使用时，一定要注意初始化。
