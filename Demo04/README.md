@@ -104,3 +104,78 @@ make([]T, size, cap)
 
 7. 切片的遍历
 切片遍历与数组遍历一样，可以使用索引和`for range`遍历。
+
+8. 切片的操作
+    1. append()方法为切片添加元素
+    Go语言的内置函数 `append()`可以为切片添加元素
+    ```go
+    slice := []string{"Hello","World"}
+    //slice[2] = "!" //错误的写法，会导致编译错误
+    slice = append(slice,"!")//添加一个元素
+    slice = append(slice,"s1","s2",...,"sn")//添加多个元素
+    ```
+    使用`append()`追加元素时，若原容器容量不够，则自动触发扩容机制，Go底层将开辟一块较原来容器两倍的空间，并将原容器内元素`copy`至新容器，然后在新容器追加元素，原容器将被回收。
+
+    调用`append()`时最好用原来的变量名接受返回值。
+
+    2. `append()`函数将元素追加到切片并返回该切片；
+
+    3. 切片的容量以两倍进行扩容。
+
+9. 切片扩容机制
+    通过观察源码 `$GOROOT/src/runtimr/slice.go`,其中扩容相关代码如下：
+    ```go
+    // growslice handles slice growth during append.
+    // It is passed the slice element type, the old slice, and the desired new minimum capacity,
+    // and it returns a new slice with at least that capacity, with the old data
+    // copied into it.
+    // The new slice's length is set to the old slice's length,
+    // NOT to the new requested capacity.
+    // This is for codegen convenience. The old slice's length is used immediately
+    // to calculate where to write new values during an append.
+    // TODO: When the old backend is gone, reconsider this decision.
+    // The SSA backend might prefer the new length or to return only ptr/cap and save stack space.
+    func growslice(et *_type, old slice, cap int) slice {
+        //...
+
+        newcap := old.cap
+        doublecap := newcap + newcap
+        if cap > doublecap {
+            newcap = cap
+        } else {
+            if old.len < 1024 {
+                newcap = doublecap
+            } else {
+                // Check 0 < newcap to detect overflow
+                // and prevent an infinite loop.
+                for 0 < newcap && newcap < cap {
+                    newcap += newcap / 4
+                }
+                // Set newcap to the requested cap when
+                // the newcap calculation overflowed.
+                if newcap <= 0 {
+                    newcap = cap
+                }
+            }
+        }
+    //...
+    ```
+    1. 首先判断，如果新申请容量`cap`大于2倍的旧容量`old.cap`，最终容量`newcap`就是新申请容量`cap`，即`(newcap = cap)`;
+    2. 否则判断，如果旧切片的长度小于`1024`，则最终容量`newcap`就是旧容量`old.cap`的两倍，即`(newcap = doublecap)`；
+    3. 否则判断，如果旧切片长度大于 `1024`，则最终容量`newcap`从旧容量`old.cap`开始循环增加至原来 1/4，直到最终容量`newcap`大于等于新申请容量`cap`，即
+    ```go
+    for 0 < newcap && newcap < cap {
+		newcap += newcap / 4
+    }
+    ```
+    4. 如果最终容量`newcap`计算值溢出，则最终容量`newcap`就是新申请容量`cap`，即`(newcap = cap)`。
+
+需要注意的是，切片扩容还会根据切片中元素的类型不同而做不同的处理。
+
+10. 切片拷贝机制
+    由于切片是引用类型，所以当两个切片 a 和 b 指向同一个底层数组，其中一个修改时，另一个也会发生变化。
+    Go语言内置函数 `copy()` 可以迅速地将一个切片地数据复制到另一个切片空间，其使用格式如下：
+    ```go
+    copy(destSlice,stcSlice []T)
+    ```
+    
