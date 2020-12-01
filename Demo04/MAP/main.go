@@ -18,4 +18,7 @@ func main() {
 	fmt.Println(m1) // map[李四:21 王五:20 赵六:23]
 	fmt.Println(m1["张三"])//0
 	fmt.Println(m1["张三"])
+	for key, value := m1 {
+		fmt.Println("Key：",key,"Value: " ,value)
+	}
 }
