@@ -13,7 +13,7 @@ func main() {
 	fmt.Println(m1["张三"])//18
 	m1["王五"] = 20
 	m1["赵六"] = 23
-	m1["李四"] = 21
+	m1["李四"] = 21 //覆盖原value
 	delete(m1,"张三")
 	fmt.Println(m1) // map[李四:21 王五:20 赵六:23]
 	fmt.Println(m1["张三"])//0
