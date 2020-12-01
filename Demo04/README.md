@@ -243,7 +243,7 @@ for _ , v := m1 {
 ```
 
 3. map删除
-使用 `delete()` 内置函数可以删除 `map` 中一组键值对，
+使用 `delete()` 内置函数可以删除 `map` 中一组键值对，若`map`中不存在此`key`则不执行此操作
 ```go
 delete(map,key)
 ```

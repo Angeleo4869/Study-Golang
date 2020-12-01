@@ -11,4 +11,11 @@ func main() {
 	m1["李四"] = 20
 	fmt.Println(m1) // map[张三:18 李四:20]
 	fmt.Println(m1["张三"])//18
+	m1["王五"] = 20
+	m1["赵六"] = 23
+	m1["李四"] = 21
+	delete(m1,"张三")
+	fmt.Println(m1) // map[李四:21 王五:20 赵六:23]
+	fmt.Println(m1["张三"])//0
+	fmt.Println(m1["张三"])
 }
