@@ -22,4 +22,19 @@ func main() {
 	e := make([]int ,4 , 6)
 	fmt.Println(e,len(e),cap(e))//初始值为[0 0 0 0]，长度为 4，容量为 6
 
+	// append追加元素
+
+	e  = append(e,1,2,7,8)
+	fmt.Println(e,len(e),cap(e))//初始值为[0 0 0 0 1 2 7 8]，长度为 8，容量为 12
+
+	//copy拷贝切片
+	f := make([]int ,12,12)
+	copy(f, e)
+	fmt.Println(f,len(f),cap(f))//初始值为[0 0 0 0 1 2 7 8 0 0 0 0]，长度为 12，容量为 12
+
+	//删除元素
+	f = append(f[4:8])
+	fmt.Println(f,len(f),cap(f))//初始值为[ 1 2 7 8]，长度为 4，容量为 8
+
+
 }
