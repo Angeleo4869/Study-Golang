@@ -209,4 +209,37 @@ Go语言中不涉及到指针的运算，指针主要用于传递参数和指向
 | `Map`:     |  根据 size 大小来初始化分配内存，不过分配后的 map 长度为 0，如果 size 被忽略了，那么会在初始化分配内存时分配一个小尺寸的内存 |
 | `Channel`: |  管道缓冲区依据缓冲区容量被初始化。如果容量为 0 或者忽略容量，管道是没有缓冲区的 |
 
+#### 五、[Map](MAP/main.go)：
+Go语言提供一种无序的、基于 `key - value` 数据结构的集合 `Map`，`Map`是引用类型，必须初始化才能使用
+1. map定义
+```go
+map [keyType]valueType
+```
+`map`类型的变量默认初始值为 `nil`，需要使用 `make()` 函数为其分配内存
+```go
+make(map[keyType]valueType,[cap])
+```
+其中 `cap` 表示 `map` 的容量（可选），一般在初始化 `map` 时应该为其指定一个合适的初始容量
 
+2. map遍历
+`for range` 遍历 `Key - value`
+```go
+for k, v := range m1 {
+    //~~
+}
+```
+`for range` 遍历 `key`
+```go
+for k := range m1 {
+    //~~~
+}
+```
+
+`for range` 遍历 `value` 
+```go
+for _ , v := m1 {
+    //~~~
+}
+```
+
+3. map删除
