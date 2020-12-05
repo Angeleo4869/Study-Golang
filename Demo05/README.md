@@ -226,3 +226,28 @@ recover是go提供的一个用来截获panic信息，重新获取协程控制的
 它的使用，有两点需要注意
 1. recover只能在defer函数中使用；
 2. recover的使用必须与触发panic的协程是同一个协程才行
+
+#### 七、[FMT输入输出函数](FMT_FUNC/main.go)
+Go语言在实现控制台输入输出需要用到 `fmt` 包下的输入函数 `scan` 和 输出函数 `print` 其有三种输入、输出方式
+```go
+import "fmt"
+
+func main() {
+	var a int
+	var b string
+	var c float64
+	//控制台输入
+	fmt.Scan(&a)
+	fmt.Scanf("%s",&b)//格式化输入
+	fmt.Scanln(c)//输入以回车结束
+	//控制台输出
+	fmt.Print(a)//直接显示
+	fmt.Printf("%v \n",b)//占位符显示，格式化输出
+	fmt.Println(c)//单独一行显示
+}
+```
+`scan` 与 `scanln`的区别
+
+`scan` 函数会识别空格左右的内容，哪怕换行符号存在也不会影响 `scan` 对内容的获取
+
+`scanln` 函数会识别空格左右的内容，但是一旦遇到换行符就会立即结束，不论后续还是否存在需要带输入的内容
