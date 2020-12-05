@@ -65,8 +65,9 @@ SET GOARCH=amd64 #设置处理器类型
 
 ### 七、走进Golang
 
-1. Golang基础知识 之 变量与常量 [Demo01](Demo01/README.md)
-2. Golang基础知识 之 程序结构 [Demo02](Demo02/README.md)
-3. Golang基础知识 之 运算与数组 [Demo03](Demo03/README.md)
-4. Golang基础知识 之 集合类 [Demo04](Demo04/README.md)
-5. Golang基础知识 之 函数 [Demo05](Demo05/README.md)
+1. Golang基础知识 之 变量与常量 [Demo01](/Demo01/)
+2. Golang基础知识 之 程序结构 [Demo02](/Demo02/)
+3. Golang基础知识 之 运算与数组 [Demo03](/Demo03/)
+4. Golang基础知识 之 集合类 [Demo04](/Demo04/)
+5. Golang基础知识 之 函数 [Demo05](/Demo05/)
+6. Golang基础知识 之 自定义类型及结构体 [Demo06](/Demo06/)
