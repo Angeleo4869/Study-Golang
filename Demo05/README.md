@@ -251,3 +251,5 @@ func main() {
 `scan` 函数会识别空格左右的内容，哪怕换行符号存在也不会影响 `scan` 对内容的获取
 
 `scanln` 函数会识别空格左右的内容，但是一旦遇到换行符就会立即结束，不论后续还是否存在需要带输入的内容
+
+[其他 `fmt` 函数](https://studygolang.com/static/pkgdoc/pkg/fmt.htm)
