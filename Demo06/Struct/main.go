@@ -32,7 +32,9 @@ func main() {
 	}
 	t.x = 10
 	t.y = 20
-	fmt.Println(t.x + t.y)
+	fmt.Printf("%T %v \n",t,t.x + t.y)//struct { x int; y int } 30 
+
+	fmt.Printf("%p \n%p \n",&t.x,&t.y)//0xc0000140c0、0xc0000140c8
 
 	//结构体指针
 	setPerson(p)
