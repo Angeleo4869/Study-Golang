@@ -176,3 +176,53 @@ func main() {
 }
 
 ```
+
+#### 六、内置函数
+| 内置函数 | 介绍 |
+|---------|------|
+|  close  | 主要用来关闭 `channel` |
+|  len    | 用来求长度， `string`、`array`、`slice`、`map`、`channel` |
+|  new    | 用来分配内存，主要用来分配值类型，返回的是指针 |
+|  make   | 用来分配内存，主要用来分配引用类型 |
+|  append | 用来追加元素到数组`array`、切片`slice`中 |
+|  panic 和 recover | 用于做错误处理 |
+
+* [Panic 和 Recover](FUNC_BUILT/main.go)
+Go语言目前没有异常机制，但是可以使用 `panic/recover` 模式来处理错误。 `panic`可以在任何地方引发，但 `recover`只有在 `defer` 调用的函数中有效
+
+```go
+
+func panicDemo(){
+	fmt.Println("Panic Start") // 2
+	defer func(){ // -2
+		fmt.Println("Panic Defer")
+		if r := recover(); r != nil {
+			fmt.Println("Recovered From", r)
+		}
+		fmt.Println("Panic Exit")
+	}()
+	panic("Trigger Panic") //3
+	fmt.Println("Panic End")
+}
+
+func main() {
+	fmt.Println("Main Start")  //1
+	defer fmt.Println("Main Exit") //-1
+	panicDemo() // 2
+	fmt.Println("Main End")
+}
+```
+panic一旦触发之后，会按照下面的顺序来做处理：
+
+1. panic开始的地方启动终止程序操作；
+2. 调用当前触发panic函数里面的defer函数；
+3. 返回该函数的调用方，当作异常返回来处理，所以这一步也会调用调用方函数的defer，一直到没有调用方为止；
+4. 打印panic的信息；
+5. 打印堆栈跟踪信息，也就是我们看到的函数调用关系；
+6. 终止程序。
+
+recover是go提供的一个用来截获panic信息，重新获取协程控制的函数
+
+它的使用，有两点需要注意
+1. recover只能在defer函数中使用；
+2. recover的使用必须与触发panic的协程是同一个协程才行
