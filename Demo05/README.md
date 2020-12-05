@@ -253,3 +253,11 @@ func main() {
 `scanln` 函数会识别空格左右的内容，但是一旦遇到换行符就会立即结束，不论后续还是否存在需要带输入的内容
 
 [其他 `fmt` 函数](https://studygolang.com/static/pkgdoc/pkg/fmt.htm)
+
+#### 八、[递归](FUNC_Recursive/main.go)
+函数自身调用自身，就是递归。
+
+递归需要满足条件
+
+1. 递归结束条件；
+2. 重复子问题；
