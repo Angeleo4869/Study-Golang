@@ -57,28 +57,34 @@ func main() {
 结构体指针取值也可以直接使用 `指针变量.字段名` 获取字段。
 
 5. 结构体初始化
-```go
-type person struct {
-	name string
-	age int
-	sex bool
-}
-
-func main() {
-    var p1 person { //key-value 型初始化
-        name : "张三"
-        age : 18
-        sex : false
-    }
-    
-    p2 := person {//使用值列表型初始化，但 值的顺序必须和结构体定义的字段类型的顺序一致
-        "李四"
-        20
-        true
+    1. 定义时初始化   
+    ```go
+    type person struct {
+        name string
+        age int
+        sex bool
     }
 
-}
-```
+    func main() {
+        var p1 person { //key-value 型初始化,各字段结尾必须接 ,
+            name : "张三",
+            age : 18,
+            sex : false,
+        }
+        
+        p2 := person {//使用值列表型初始化，但 值的顺序必须和结构体定义的字段类型的顺序一致
+            "李四"
+            20
+            true
+        }
+
+    }
+    ```
+
+    2. [构造函数初始化](Constuctor/main.go)
+    构造函数可以返回 结构体值 或 结构体指针
+
+    一般在结构体数据较大的时候使用结构体指针，可以减小内存开销
 
 6. 结构体内存结构
 Go语言中，结构体占用一块连续的内存
@@ -94,3 +100,12 @@ var t struct {
 
     fmt.Printf("%p \n%p \n",&t.x,&t.y)//0xc0000140c0、0xc0000140c8
 ```
+
+#### 三、[方法](Method/main.go)
+Go语言中的方法 `method` 是作用于特定类型变量的函数，这种特定类型变量叫做 接收者 `Receiver` ，其类似于其他语言中的 `this` 或 `self`。
+```go
+func (接收者变量 接收者类型) 方法名 (参数)  (返回值) {
+    函数体
+}
+```
+接收者变量命名时，建议使用接收者类型第一个小写字母。
