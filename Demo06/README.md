@@ -81,7 +81,7 @@ func main() {
     }
     ```
 
-    2. [构造函数初始化](Constuctor/main.go)
+    2. [构造函数初始化](Constructor/main.go)
     构造函数可以返回 结构体值 或 结构体指针
 
     一般在结构体数据较大的时候使用结构体指针，可以减小内存开销
@@ -109,3 +109,32 @@ func (接收者变量 接收者类型) 方法名 (参数)  (返回值) {
 }
 ```
 接收者变量命名时，建议使用接收者类型第一个小写字母。
+
+Go语言中只能给包内的的类型添加方法
+
+#### 四、[结构体匿名字段与结构体嵌套](Anonymous_Struct/main.go)
+1. 匿名字段
+Go语言在定义结构体字段是可以匿名，但，由于结构体字段名不可重复，在使用时只能有一种类型为匿名，若有多个字段类型相同则不可匿名
+```go
+type person struct {
+    string //name
+    int  //age
+}
+```
+2. 结构体嵌套
+Go语言在定义结构体时，字段可以为任意数据类型，结构体也可以作为字段
+```go
+type person struct {
+    name string
+    age int
+}
+
+type child struct {
+    father person
+    mother person
+}
+```
+
+#### 五、[结构体继承](Anonymous_Struct/main.go)
+Go语言中并没有继承这一模式，但可以通过结构体内嵌实现模拟继承，继承方法与结构体内嵌一样，这里不过多描述
+

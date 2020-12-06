@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-
 type person struct {
 	name string
 	age int
 	sex bool
 }
 
+//指针接收者
 func newPersonForP (name string, age int, sex bool) *person { //返回的是结构体指针
 	return &person {
 		name : name,
