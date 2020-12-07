@@ -141,4 +141,61 @@ Go语言中并没有继承这一模式，但可以通过结构体内嵌实现模
 需要注意的是，继承一个结构体之后，也会继承该结构体的方法。
 
 
+#### 六、[结构体与Json](Struct_Json/main.go)
+在开发中，难免会遇到数据传递问题，其中一种就是通过 `Json` 数据格式传递
+
+1. 序列化：将结构体转化为 `Json`
+
+2. 反序列化：将 `Json` 转化为 结构体
+
+Go语言可以支持结构体与 `Json` 的转换，需要导入 `encoding/json` 包
+
+```go
+package main
+
+import "fmt"
+import "encoding/json"
+
+type person struct {
+	name string 
+	age int
+}
+
+unc main() {
+	p1 := person {
+		name : "张三",
+		age : 18,
+	}
+    p, err := json.Marshal(p1)
+    fmt.Println(string(p))//{}
+}
+```
+需要注意的是，由于该结构体字段首字母为小写，在 `Json` 调用该结构体变量时，并不能访问到其字段，需要将其字段名首字母改为大写。
+```go
+package main
+
+import "fmt"
+import "encoding/json"
+
+type person struct {
+	Name string 
+	Age int
+}
+
+unc main() {
+	p1 := person {
+		Name : "张三",
+		Age : 18,
+	}
+    p, err := json.Marshal(p1)
+    fmt.Println(string(p))//{"Name":"张三","Age":18}
+}
+```
+也可以在解析时使用别名
+```go
+type person struct {
+	name string `json:"name",db:"name"`
+	age int
+}
+```
 
