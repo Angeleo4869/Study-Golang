@@ -72,4 +72,4 @@ SET GOARCH=amd64 #设置处理器类型
 5. Golang基础知识 之 函数 [Demo05](/Demo05/)
 6. Golang基础知识 之 自定义类型及结构体 [Demo06](/Demo06/)
 7. Golang基础知识 之 接口与包 [Demo07](/Demo07/)
-8. Golang基础知识 之 文件读写 [Demo07]
+8. Golang基础知识 之 文件读写 [Demo08](/Demo08/)
