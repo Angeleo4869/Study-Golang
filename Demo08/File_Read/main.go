@@ -61,10 +61,10 @@ func main() {
 	defer fileObj.Close() //关闭文件 
 
 	//os.read() 方法读取文件
-	// readFileFromOs(fileObj)
+	readFileFromOs(fileObj)
 
 	//bufio.readXX()方法读取文件
-	readFileFromBufio(fileObj)
+	// readFileFromBufio(fileObj)
 
 	//ioutil.read()方法读取文件
 	// readFileFromIoutil()
